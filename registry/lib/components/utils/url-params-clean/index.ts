@@ -53,6 +53,7 @@ const entry = async () => {
     'jumpLinkType',
     'hasBack',
     'noTitleBar',
+    'msource',
   ]
   const [blockParams] = registerAndGetData('urlParamsClean.params', builtInBlockParams)
   const builtInSiteSpecifiedParams = [
