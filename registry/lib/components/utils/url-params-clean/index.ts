@@ -49,6 +49,10 @@ const entry = async () => {
     'vd_source',
     'is_story_h5',
     'buvid',
+    'goFrom',
+    'jumpLinkType',
+    'hasBack',
+    'noTitleBar',
   ]
   const [blockParams] = registerAndGetData('urlParamsClean.params', builtInBlockParams)
   const builtInSiteSpecifiedParams = [
@@ -71,14 +75,6 @@ const entry = async () => {
     {
       match: /\/\/www\.bilibili\.com\/video\//,
       param: 'up_id',
-    },
-    {
-      match: /\/\/mall\.bilibili\.com\//,
-      param: 'hasBack',
-    },
-    {
-      match: /\/\/mall\.bilibili\.com\//,
-      param: 'jumpLinkType',
     },
   ]
   const [siteSpecifiedParams] = registerAndGetData(
