@@ -80,6 +80,10 @@ const entry = async () => {
       match: /\/\/mall\.bilibili\.com\//,
       param: 'themeId',
     },
+    {
+      match: /\/\/mall\.bilibili\.com\//,
+      param: 'noReffer',
+    },
   ]
   const [siteSpecifiedParams] = registerAndGetData(
     'urlParamsClean.siteSpecifiedParams',
