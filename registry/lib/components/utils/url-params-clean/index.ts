@@ -94,7 +94,7 @@ const entry = async () => {
   const [tailingSlash] = registerAndGetData('urlParamsClean.tailingSlash', builtInTailingSlash)
 
   const clean = () => {
-    const urlParams = window.location.search.substring(1).split('&')
+    const urlParams = window.location.hostname === 'mall.bilibili.com'? location.href.replace("#", "&").split("?")[1].split("&"): window.location.search.substring(1).split('&')
     if (urlParams.some(param => noClean.some(it => param.includes(it)))) {
       return
     }
