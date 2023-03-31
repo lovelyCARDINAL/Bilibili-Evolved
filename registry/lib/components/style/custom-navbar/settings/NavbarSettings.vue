@@ -32,6 +32,20 @@
         </div>
       </div>
       <div class="navbar-settings-section">
+        <div class="navbar-settings-section-title">搜索框宽度</div>
+        <div class="navbar-settings-section-description">
+          搜索框宽度, 单位为vw, 默认为15。
+        </div>
+        <div
+          class="navbar-settings-section-content"
+          @mouseover="peekPadding(true)"
+          @mouseout="peekPadding(false)"
+        >
+          <VSlider v-model="searchWidth" :min="10" :max="50" :defaultValue="15" :step="0.5"></VSlider>
+          <div class="search-width-value">{{ searchWidth.toFixed(1) }}vw</div>
+        </div>
+      </div>
+      <div class="navbar-settings-section">
         <div class="navbar-settings-section-title">元素呈现</div>
         <div class="navbar-settings-section-description">
           按住并拖动可以调整顺序, 点击眼睛图标可以切换隐藏/显示.
@@ -103,12 +117,19 @@ export default Vue.extend({
       rendered,
       hidden: navbarOptions.hidden,
       loaded: false,
+      searchWidth: 15,
     }
   },
   watch: {
     padding: lodash.debounce((newValue: number) => {
       navbarOptions.padding = newValue
     }, 200),
+    searchWidth(newValue: number) {
+      this.$nextTick(() => {
+        const input = document.querySelector('.launch-bar .input-area .launch-bar-form .input')
+        input.style.width = `${newValue}vw`
+      })
+    },
   },
   async mounted() {
     addComponentListener('customNavbar.padding', (newValue: number) => {
